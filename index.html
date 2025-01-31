@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Dawit Weather App</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="weather-card">
+      <div class="theme-toggle">
+        <button id="theme-btn"><i class="fas fa-moon"></i></button>
+      </div>
+      <h1>3D Dawit Weather</h1>
+      <div class="search">
+        <input type="text" id="city-input" placeholder="Enter city name">
+        <button id="search-btn"><i class="fas fa-search"></i></button>
+        <div id="suggestions" class="suggestions"></div>
+      </div>
+      <div class="weather-info">
+        <h2 id="city-name">City Name</h2>
+        <div class="city-image" id="city-image">
+          <img src="" alt="City Image" id="city-image-src">
+        </div>
+        <div class="weather-icon" id="weather-icon">
+          <i class="fas fa-sun"></i> <!-- Default icon -->
+        </div>
+        <p id="temperature">25°C</p>
+        <p id="weather-description">Sunny</p>
+        <div class="details">
+          <p><i class="fas fa-tint"></i> Humidity: <span id="humidity">60%</span></p>
+          <p><i class="fas fa-wind"></i> Wind: <span id="wind-speed">10 km/h</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
