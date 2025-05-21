@@ -1,4 +1,4 @@
-const apiKey = ''; // Your WeatherAPI.com key
+const apiKey = 'a5791138a69b4127a00134332252105'; // Your WeatherAPI.com key
 const apiUrl = 'https://api.weatherapi.com/v1/current.json?key=';
 
 const searchBox = document.querySelector('#city-input');
@@ -45,13 +45,13 @@ themeBtn.addEventListener('click', () => {
 
 // Fetch city image from Unsplash
 async function fetchCityImage(city) {
-  const unsplashAccessKey = ''; //Your unsplash access key
+  const unsplashAccessKey = 'YOUR_UNSPLASH_ACCESS_KEY'; // Replace with your Unsplash access key
   const response = await fetch(`https://api.unsplash.com/search/photos?query=${city}&client_id=${unsplashAccessKey}`);
   const data = await response.json();
   if (data.results.length > 0) {
     cityImage.src = data.results[0].urls.regular;
   } else {
-    cityImage.src = 'https://via.placeholder.com/350x150?text=No+Image+Found';
+    cityImage.src = 'https://images.pexels.com/photos/2448749/pexels-photo-2448749.jpeg';
   }
 }
 
@@ -74,12 +74,15 @@ async function fetchSuggestions(query) {
 
 // Check weather
 async function checkWeather(city) {
-  const response = await fetch(`${apiUrl}${apiKey}&q=${city}`);
-  const data = await response.json();
+  try {
+    const response = await fetch(`${apiUrl}${apiKey}&q=${city}`);
+    const data = await response.json();
 
-  if (response.status === 400) {
-    alert('City not found');
-  } else {
+    if (response.status === 400) {
+      alert('City not found');
+      return;
+    }
+
     const location = data.location;
     const current = data.current;
 
@@ -90,22 +93,34 @@ async function checkWeather(city) {
     windSpeed.textContent = `${current.wind_kph} km/h`;
 
     const iconCode = current.condition.code;
-    weatherIcon.innerHTML = `<i class="${iconMap[iconCode]}"></i>`;
+    weatherIcon.innerHTML = `<i class="${iconMap[iconCode] || 'fas fa-cloud'}"></i>`;
 
     // Fetch city image
     fetchCityImage(location.name);
+  } catch (error) {
+    console.error('Error fetching weather data:', error);
+    alert('Error fetching weather data. Please try again.');
   }
 }
 
 // Event listeners
 searchBtn.addEventListener('click', () => {
-  checkWeather(searchBox.value);
+  const city = searchBox.value.trim();
+  if (city) {
+    checkWeather(city);
+  }
 });
 
 searchBox.addEventListener('input', () => {
-  if (searchBox.value.length > 2) {
-    fetchSuggestions(searchBox.value);
+  const query = searchBox.value.trim();
+  if (query.length > 2) {
+    fetchSuggestions(query);
   } else {
     suggestions.innerHTML = '';
   }
+});
+
+// Initial weather check for a default city
+window.addEventListener('load', () => {
+  checkWeather('London');
 });
