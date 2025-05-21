@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3D Dawit Weather App</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>Modern Weather App</title>
+  <link rel="icon" href="https://images.pexels.com/photos/1463530/pexels-photo-1463530.jpeg?auto=compress&cs=tinysrgb&w=32" type="image/jpeg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,25 +15,24 @@
       <div class="theme-toggle">
         <button id="theme-btn"><i class="fas fa-moon"></i></button>
       </div>
-      <h1>3D Dawit Weather</h1>
       <div class="search">
-        <input type="text" id="city-input" placeholder="Enter city name">
+        <input type="text" id="city-input" placeholder="Search for a city...">
         <button id="search-btn"><i class="fas fa-search"></i></button>
         <div id="suggestions" class="suggestions"></div>
       </div>
       <div class="weather-info">
-        <h2 id="city-name">City Name</h2>
-        <div class="city-image" id="city-image">
-          <img src="" alt="City Image" id="city-image-src">
+        <h2 id="city-name">Loading...</h2>
+        <div class="city-image">
+          <img src="https://images.pexels.com/photos/2448749/pexels-photo-2448749.jpeg" alt="City Image" id="city-image-src">
         </div>
         <div class="weather-icon" id="weather-icon">
-          <i class="fas fa-sun"></i> <!-- Default icon -->
+          <i class="fas fa-sun"></i>
         </div>
-        <p id="temperature">25°C</p>
-        <p id="weather-description">Sunny</p>
+        <p id="temperature">--°C</p>
+        <p id="weather-description">Loading weather information...</p>
         <div class="details">
-          <p><i class="fas fa-tint"></i> Humidity: <span id="humidity">60%</span></p>
-          <p><i class="fas fa-wind"></i> Wind: <span id="wind-speed">10 km/h</span></p>
+          <p><i class="fas fa-tint"></i> <span id="humidity">--%</span></p>
+          <p><i class="fas fa-wind"></i> <span id="wind-speed">-- km/h</span></p>
         </div>
       </div>
     </div>
